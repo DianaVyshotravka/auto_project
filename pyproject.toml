@@ -1,0 +1,27 @@
+[tool.poetry]
+name = "gl_autotool"
+version = "1.0.0"
+description = "A custom framework for web testing with Playwright"
+authors = ["Dianka <vyshotravka.diana2@gmail.com>"]
+#readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+playwright = "^1.43.0"
+pytest = "^8.1.1"
+pytest-playwright = "^0.4.4"
+ruff = "^0.4.7"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.pytest.ini_options]
+minversion = "7.0"
+testpaths = [
+    "tests",
+]
+
+
+
+
