@@ -1,15 +1,15 @@
 import pytest
 from playwright.sync_api import sync_playwright
 
-DEFAULT_BROWSER = "chromium"
-
 class BaseTest:
+    BASE_URL = "https://ultimateqa.com/automation"
+    DEFAULT_BROWSER = "chromium"
     @pytest.fixture(autouse=True)
     def setup_and_teardown(self, request):
         """
         Fixture for setting up and tearing down Playwright resources.
         """
-        browser_type = getattr(request, "param", DEFAULT_BROWSER)
+        browser_type = getattr(request, "param", self.DEFAULT_BROWSER)
         self.playwright = sync_playwright().start()
 
         if browser_type == "chromium":
