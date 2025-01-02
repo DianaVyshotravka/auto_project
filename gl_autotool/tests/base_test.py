@@ -1,6 +1,7 @@
 import pytest
 from playwright.sync_api import sync_playwright
 
+DEFAULT_BROWSER = "chromium"
 
 class BaseTest:
     @pytest.fixture(autouse=True)
@@ -8,7 +9,7 @@ class BaseTest:
         """
         Fixture for setting up and tearing down Playwright resources.
         """
-        browser_type = getattr(request, "param", "chromium")  # Default to Chromium
+        browser_type = getattr(request, "param", DEFAULT_BROWSER)
         self.playwright = sync_playwright().start()
 
         if browser_type == "chromium":
