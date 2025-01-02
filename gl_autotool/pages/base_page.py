@@ -1,7 +1,7 @@
 from playwright.sync_api import Page, ConsoleMessage
 
 
-class Base:
+class BasePage:
     def __init__(self, page: Page):
         self.page = page
         self.context = page.context
