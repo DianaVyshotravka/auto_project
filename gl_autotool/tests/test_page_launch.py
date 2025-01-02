@@ -1,4 +1,4 @@
-from gl_autotool.pages.basic_page import Base
+from gl_autotool.pages.base_page import Base
 from gl_autotool.tests.base_test import BaseTest
 
 
