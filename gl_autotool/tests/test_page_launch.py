@@ -17,5 +17,4 @@ class TestLaunchPage(BaseTest):
         base_page.wait_for_load()
         title = base_page.get_title()
 
-        print(f"Page title: {title}")
-        assert title == "Automation Practice - Ultimate QA", "Wrong title"
+        assert title == "Automation Practice - Ultimate QA", f"Wrong title: {title}"
