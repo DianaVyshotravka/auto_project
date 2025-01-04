@@ -1,5 +1,9 @@
+import structlog
+
 from gl_autotool.pages.base_page import BasePage
 from gl_autotool.tests.base_test import BaseTest
+
+logger = structlog.get_logger("my_logger")
 
 
 class TestLaunchPage(BaseTest):
@@ -11,10 +15,9 @@ class TestLaunchPage(BaseTest):
         """
         Test to verify if web page is loaded and gets its title.
         """
-        base_page = BasePage(self.page)
         url = self.BASE_URL
-        base_page.open_url(url)
-        base_page.wait_for_load()
-        title = base_page.get_title()
+        page = BasePage(self.page)
+        page.open_url(url)
+        title = page.get_title()
 
         assert title == "Automation Practice - Ultimate QA", f"Wrong title: {title}"

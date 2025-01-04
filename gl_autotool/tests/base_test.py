@@ -1,6 +1,7 @@
 import pytest
 from playwright.sync_api import sync_playwright
 
+
 class BaseTest:
     BASE_URL = "https://ultimateqa.com/automation"
     DEFAULT_BROWSER = "chromium"
