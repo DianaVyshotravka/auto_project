@@ -9,6 +9,12 @@ class BaseTest:
     def setup_and_teardown(self, request):
         """
         Fixture for setting up and tearing down Playwright resources.
+
+        Parameters
+        ----------
+        request : pytest.FixtureRequest
+        The request object which allows access to test-specific parameters,
+        including the browser type specified when running the test.
         """
         browser_type = getattr(request, "param", self.DEFAULT_BROWSER)
         self.playwright = sync_playwright().start()
