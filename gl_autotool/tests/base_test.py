@@ -3,8 +3,8 @@ from playwright.sync_api import sync_playwright
 
 
 class BaseTest:
-    BASE_URL = "https://ultimateqa.com/automation"
-    DEFAULT_BROWSER = "chromium"
+    base_url = "https://ultimateqa.com/automation"
+    default_browser = "chromium"
     @pytest.fixture(autouse=True)
     def setup_and_teardown(self, request: pytest.FixtureRequest):
         """
@@ -15,7 +15,7 @@ class BaseTest:
         request : The request object which allows access to test-specific parameters,
         including the browser type specified when running the test.
         """
-        browser_type = getattr(request, "param", self.DEFAULT_BROWSER)
+        browser_type = getattr(request, "param", self.default_browser)
         self.playwright = sync_playwright().start()
 
         if browser_type == "chromium":
