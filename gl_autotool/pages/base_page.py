@@ -1,13 +1,11 @@
-import structlog
 from playwright.sync_api import Page, ConsoleMessage
-
-logger = structlog.get_logger("my_logger")
-
+from structlog import get_logger
 
 
 class BasePage:
     def __init__(self, page: Page):
         self.page = page
+        self.logger = get_logger(self.__class__.__name__)
         self.context = page.context
         self.page.on('console', self._console_handler)
 
@@ -23,9 +21,9 @@ class BasePage:
         The console message object emitted by the web page.
         """
         if msg.type == "error":
-            logger.error(f"Console Error: {msg.text}")
+            self.logger.error(f"Console Error: {msg.text}")
         else:
-            logger.info(f"Console {msg.type}: {msg.text}")
+            self.logger.info(f"Console {msg.type}: {msg.text}")
 
     def open_url(self, url: str, timeout: int = 30000) -> None:
         """
@@ -38,7 +36,7 @@ class BasePage:
         timeout : int
             Maximum time to wait for navigation in milliseconds (default: 30s).
         """
-        logger.info(f"Opening URL: {url}")
+        self.logger.info(f"Opening URL: {url}")
         self.page.goto(url, timeout=timeout)
         self.page.wait_for_load_state()
 
@@ -52,5 +50,5 @@ class BasePage:
             The title of the page.
         """
         title = self.page.title()
-        logger.info(f"Page title retrieved: {title}")
+        self.logger.info(f"Page title retrieved: {title}")
         return title
