@@ -1,9 +1,5 @@
-import structlog
-
 from gl_autotool.pages.base_page import BasePage
 from gl_autotool.tests.base_test import BaseTest
-
-logger = structlog.get_logger("my_logger")
 
 
 class TestLaunchPage(BaseTest):

@@ -25,7 +25,7 @@ class BasePage:
         else:
             self.logger.info(f"Console {msg.type}: {msg.text}")
 
-    def open_url(self, url: str, timeout: int = 30000) -> None:
+    def open_url(self, url: str, timeout: int = 30) -> None:
         """
         Open page by URL and wait for it to load.
 
@@ -34,10 +34,11 @@ class BasePage:
         url : str
             The URL to navigate to.
         timeout : int
-            Maximum time to wait for navigation in milliseconds (default: 30s).
+            Maximum time to wait for navigation in seconds (default: 30s).
         """
+        timeout_ms = timeout * 1000
         self.logger.info(f"Opening URL: {url}")
-        self.page.goto(url, timeout=timeout)
+        self.page.goto(url, timeout=timeout_ms)
         self.page.wait_for_load_state()
 
     def get_title(self) -> str:
