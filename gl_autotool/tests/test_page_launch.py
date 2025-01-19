@@ -11,9 +11,8 @@ class TestLaunchPage(BaseTest):
         """
         Test to verify if web page is loaded and gets its title.
         """
-        url = self.BASE_URL
         page = BasePage(self.page)
-        page.open_url(url)
+        page.open_url(self.BASE_URL)
         title = page.get_title()
 
         assert title == "Automation Practice - Ultimate QA", f"Wrong title: {title}"
