@@ -12,7 +12,7 @@ class BaseTest:
 
         Parameters
         ----------
-        request : The request object which allows access to test-specific parameters,
+        request: The request object which allows access to test-specific parameters,
         including the browser type specified when running the test.
         """
         browser_type = getattr(request, "param", self.default_browser)

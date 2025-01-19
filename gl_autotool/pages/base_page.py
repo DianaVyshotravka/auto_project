@@ -17,7 +17,7 @@ class BasePage:
 
         Parameters
         ----------
-        msg : The console message object emitted by the web page.
+        msg: The console message object emitted by the web page.
         """
         if msg.type == "error":
             self.logger.error(f"Console Error: {msg.text}")
@@ -30,8 +30,8 @@ class BasePage:
 
         Parameters
         ----------
-        url : The URL to navigate to.
-        timeout : Maximum time to wait for navigation in seconds (default: 30s).
+        url: The URL to navigate to.
+        timeout: Maximum time to wait for navigation in seconds (default: 30s).
         """
         timeout_ms = timeout * 1000
         self.logger.info(f"Opening URL: {url}")
