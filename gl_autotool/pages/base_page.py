@@ -17,8 +17,7 @@ class BasePage:
 
         Parameters
         ----------
-        msg : ConsoleMessage
-        The console message object emitted by the web page.
+        msg : The console message object emitted by the web page.
         """
         if msg.type == "error":
             self.logger.error(f"Console Error: {msg.text}")
@@ -31,10 +30,8 @@ class BasePage:
 
         Parameters
         ----------
-        url : str
-            The URL to navigate to.
-        timeout : int
-            Maximum time to wait for navigation in seconds (default: 30s).
+        url : The URL to navigate to.
+        timeout : Maximum time to wait for navigation in seconds (default: 30s).
         """
         timeout_ms = timeout * 1000
         self.logger.info(f"Opening URL: {url}")
@@ -44,11 +41,6 @@ class BasePage:
     def get_title(self) -> str:
         """
         Return the page title.
-
-        Returns
-        -------
-        str
-            The title of the page.
         """
         title = self.page.title()
         self.logger.info(f"Page title retrieved: {title}")

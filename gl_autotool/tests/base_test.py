@@ -6,14 +6,13 @@ class BaseTest:
     BASE_URL = "https://ultimateqa.com/automation"
     DEFAULT_BROWSER = "chromium"
     @pytest.fixture(autouse=True)
-    def setup_and_teardown(self, request):
+    def setup_and_teardown(self, request: pytest.FixtureRequest):
         """
         Fixture for setting up and tearing down Playwright resources.
 
         Parameters
         ----------
-        request : pytest.FixtureRequest
-        The request object which allows access to test-specific parameters,
+        request : The request object which allows access to test-specific parameters,
         including the browser type specified when running the test.
         """
         browser_type = getattr(request, "param", self.DEFAULT_BROWSER)
